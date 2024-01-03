@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link href="img/logo/logo.png" rel="icon">
+  <title>Quản lý sản phẩm | rakkiibookstore</title>
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="css/admin-app.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/update_product.css">
+  <!--====== Google Font ======-->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet">
+<body id="page-top">
+  <div id="wrapper">
+    <!-- Sidebar -->
+    <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
+      <script src="admin-navsidebar.js"></script>
+    </ul>
+    <!-- Sidebar -->
+    <div id="content-wrapper" class="d-flex flex-column">
+      <div id="content">
+        <!-- TopBar -->
+        <nav class="navbar navbar-expand navbar-light bg-navbar topbar mb-4 static-top" id="topbar">
+          <script src="admin-navtopbar.js"></script>
+        </nav>
+        <!-- Topbar -->
+
+        <!-- Container Fluid-->
+        <div class="container-fluid" id="container-wrapper-update" style="display: none;">
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">CẬP NHẬT SẢN PHẨM</h1>
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="./">Trang chủ</a></li>
+              <li class="breadcrumb-item">Quản lý</li>
+              <li class="breadcrumb-item active" aria-current="page">Sản phẩm</li>
+            </ol>
+          </div>
+
+          <div class="update_product">
+            <!-- Cập nhật sản phẩm -->
+            <div class="card">
+              <div class="border_card">
+                <h6 class="m-0 font-weight-bold text-primary">THÊM/SỬA SẢN PHẨM</h6>
+              </div>
+            </div>
+            <div class="edit_product">
+              <form id="form_product" action="http://localhost:3000/update-product" method="post">
+                <table id="table_product">
+                    <tr>
+                        <td>Mã sản phẩm</td>
+                        <td><input type="text" id="productid" name="productid"></td>
+                    </tr>
+                    <tr>
+                      <td>Chọn hình ảnh</td>
+                      <td class="image-container">
+                        <input type="text" id="productimg" name="productimg" readonly>
+                        <button type="button" onclick="openFilePicker()">Choose File</button>
+                        <input type="file" id="fileInput" style="display: none" onchange="loadImage(event)">
+                        <img id="selectedProductImage" style="max-width: 50px;"/> <!-- Thêm phần tử hình ảnh vào đây -->
+                      </td>
+                    </tr>
+                    <tr>
+                        <td>Tên sản phẩm</td>
+                        <td><input type="text" id="productname" name="productname"></td>
+                    </tr>
+                    <tr>
+                      <td>Mô tả sản phẩm</td>
+                      <td><textarea type="text" id="desc" name="desc"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>Giá bán</td>
+                        <td><input type="text" id="price" name="price"></td>
+                    </tr>
+                    <tr>
+                        <td>Nhà sản xuất</td>
+                        <td><input type="text" id="publisher" name="publisher"></td>
+                    </tr>
+                    <tr>
+                        <td>Nhóm sản phẩm</td>
+                        <td>
+                            <select id="tag" name="tag">
+                                <option id="" value=""disabled selected hidden>Chọn danh mục sản phẩm</option>
+                                <option id=""value="Sách tiếng Anh">Sách tiếng Anh</option>
+                                <option id=""value="Sách tiếng Trung">Sách tiếng Trung</option>
+                                <option id=""value="Sách tiếng Nhật">Sách tiếng Nhật</option>
+                                <option id=""value="Sách tiếng Hàn">Sách tiếng Hàn</option>
+                                <option id=""value="Khác">Khác</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                </table>
+                <div id="button">
+                    <button type="submit" onclick="return saveProduct()">Lưu</button>       
+                    <button type="button" onclick="cancel()">Hủy bỏ</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- Container Fluid-->
+        <div class="container-fluid" id="container-wrapper-manage">
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Quản lý sản phẩm</h1>
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="./">Trang chủ</a></li>
+              <li class="breadcrumb-item">Quản lý</li>
+              <li class="breadcrumb-item active" aria-current="page">Sản phẩm</li>
+            </ol>
+          </div>
+          <!-- Row -->
+          <div class="row" id="row">
+            <!-- Datatables -->
+            <div class="col-lg-12">
+              <div class="card mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Thông tin sản phẩm</h6>
+                  <a href="#" class="btn btn-sm btn-primary" style="width: 80px;" onclick="addProduct()">Tạo mới</a>
+                  <a style="width: 400px;"></a>
+                  Search: <input ng-model="search">
+                </div>
+                <div class="table-responsive p-3">
+                    <table class="table align-items-center table-flush" id ="demo"> 
+
+<script>
+
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+    myFunction(this);
+    } 
+    };
+    xhttp.open("GET", "stored/product.xml", true);
+    xhttp.send();
+    function myFunction(xml) {
+    var i;
+    var xmlDoc = xml.responseXML;
+    var table="<thead class=\"thead-light\">\n" +"<tr><th>Mã sản phẩm</th><th>Hình ảnh</th><th>Tên sản phẩm</th><th>Mô tả</th><th>Giá</th><th>Nhà xuất bản</th><th>Danh mục</th><th></th><th></th></tr>";
+    var x = xmlDoc.getElementsByTagName("product");
+    for (i = 0; i <x.length; i++) {
+    table += "<tr><td>" + x[i].getElementsByTagName("productid")[0].childNodes[0].nodeValue + "</td><td>" + "<img src=\"stored/" +
+  x[i].getElementsByTagName("productimg")[0].childNodes[0].nodeValue +"\" width=\"100\">" +
+  "</td><td>" +
+    x[i].getElementsByTagName("productname")[0].childNodes[0].nodeValue + "</td><td>" +
+      x[i].getElementsByTagName("desc")[0].childNodes[0].nodeValue + "</td><td>" +
+        x[i].getElementsByTagName("price")[0].childNodes[0].nodeValue + "</td><td>" +
+          x[i].getElementsByTagName("publisher")[0].childNodes[0].nodeValue + "</td><td>" +
+    x[i].getElementsByTagName("tag")[0].childNodes[0].nodeValue + "</td><td>" +
+  "<a href=\"#\" class=\"btn btn-sm btn-primary\" onclick=\"editProduct(this)\">Sửa</a>" + "</td><td>" +
+  "<form action=\"http://localhost:3000/delete-product\" method=\"post\">" +
+        "<input type=\"hidden\" name=\"nodeId\" value=\"" + x[i].getElementsByTagName("productid")[0].childNodes[0].nodeValue + "\">" +
+        "<button type=\"submit\" class=\"btn btn-sm btn-danger\" onclick=\"return deleteProduct(this)\">Xóa</button></form>" +
+        "</td></tr>";
+    }
+    document.getElementById("demo").innerHTML = table;
+    }
+
+    // The price constraint is a number
+    document.getElementById('price').addEventListener('input', function (e) {
+      var input = e.target,
+          value = input.value;
+
+      if (!/^\d*$/.test(value)) {
+        input.value = value.slice(0, -1);
+      }
+    });
+  
+    // Add product
+    function addProduct(){
+      var container1 = document.getElementById ('container-wrapper-manage');
+      var container2 = document.getElementById ('container-wrapper-update');
+
+      container1.style.display = "none";
+      container2.style.display = "block";
+    }
+
+
+    function loadImage(event) {
+            var image = document.getElementById('selectedProductImage');
+            var inputText = document.getElementById('productimg');
+            image.src = URL.createObjectURL(event.target.files[0]);
+            inputText.value = event.target.files[0].name; // Hiển thị tên tệp trong trường input text
+        }
+    function openFilePicker() {
+        document.getElementById('fileInput').click();
+    }
+
+    function saveProduct() {
+        // Lấy tất cả các trường nhập liệu từ form
+        var inputs = document.getElementById('form_product').elements;
+
+        // Duyệt qua tất cả các trường nhập liệu
+        for (var i = 0; i < inputs.length; i++) {
+            // Kiểm tra xem trường nhập liệu có trống hay không
+            if (inputs[i].type !== "button" && inputs[i].type !== "submit" && inputs[i].type !== "file") {
+                if (inputs[i].value.trim() === '') {
+                    alert('Vui lòng điền đầy đủ thông tin sản phẩm!');
+
+                    return false; // Ngăn chặn form được gửi đi
+                }
+            }
+        }
+
+        // Nếu tất cả các trường nhập liệu đều đã được điền, cho phép form được gửi đi
+        return true;
+
+
+    }
+    function editProduct(row) {
+      var editedRow = row.parentNode.parentNode;
+
+      addProduct();
+
+      // Lấy thông tin sản phẩm từ dòng được chọn
+      var productId = editedRow.cells[0].innerHTML;
+      var productImage = editedRow.cells[1].getElementsByTagName("img")[0].src;
+      var productName = editedRow.cells[2].innerHTML;
+      var productDescription = editedRow.cells[3].innerHTML;
+      var productPrice = editedRow.cells[4].innerHTML;
+      var productManufacturer = editedRow.cells[5].innerHTML;
+      var productCategory = editedRow.cells[6].innerHTML;
+
+      // Hiển thị thông tin sản phẩm vào các input của table_product
+      document.getElementById("productid").value = productId;
+      document.getElementById("selectedProductImage").src = productImage;
+      document.getElementById("productname").value = productName;
+      document.getElementById("desc").value = productDescription;
+      document.getElementById("price").value = productPrice;
+      document.getElementById("publisher").value = productManufacturer;
+      document.getElementById("tag").value = productCategory;
+
+      var inputText = document.getElementById('productimg');
+      inputText.value = productImage.split('\\').pop().split('/').pop();
+
+      // Không thay đổi productid
+      document.getElementById("productid").readOnly = true;
+
+    }
+
+    // Delete product
+    function deleteProduct(clickedButton) {
+
+      // Confirm deletion
+      var confirmDelete = confirm("Bạn có chắc chắn muốn xóa sản phẩm?");
+      if (!confirmDelete) {
+        return false;
+      }
+      return true;
+    }
+
+    // Button cancel
+    function cancel(){
+      var container1 = document.getElementById ('container-wrapper-manage');
+      var container2 = document.getElementById ('container-wrapper-update');
+
+      container1.style.display = "block";
+      container2.style.display = "none";
+
+      // Reset values
+      document.getElementById("productid").value = "";
+      document.getElementById("productname").value = "";
+      document.getElementById("desc").value = "";
+      document.getElementById("price").value = "";
+      document.getElementById("publisher").value = "";
+      document.getElementById("tag").value = "";
+      document.getElementById('productimg').value = "";
+      document.getElementById('selectedProductImage').src = "";
+
+    }
+
+
+  </script>
+    </table>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Scroll to top -->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="js/admin-app.min.js"></script>
+  <!-- Page level plugins -->
+  <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+  <!-- Page level custom scripts -->
+
+</body>
+
+</html>

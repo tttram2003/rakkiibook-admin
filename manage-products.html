@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link href="img/logo/logo.png" rel="icon">
+  <title>Quản lý sản phẩm | rakkiibookstore</title>
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="css/admin-app.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/update_product.css">
+  <!--====== Google Font ======-->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet">
+<body id="page-top">
+  <div id="wrapper">
+    <!-- Sidebar -->
+    <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
+      <script src="admin-navsidebar.js"></script>
+    </ul>
+    <!-- Sidebar -->
+    <div id="content-wrapper" class="d-flex flex-column">
+      <div id="content">
+        <!-- TopBar -->
+        <nav class="navbar navbar-expand navbar-light bg-navbar topbar mb-4 static-top" id="topbar">
+          <script src="admin-navtopbar.js"></script>
+        </nav>
+        <!-- Topbar -->
+
+        <!-- Container Fluid-->
+        <div class="container-fluid" id="container-wrapper-update" style="display: none;">
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">CẬP NHẬT SẢN PHẨM</h1>
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="./">Trang chủ</a></li>
+              <li class="breadcrumb-item">Quản lý</li>
+              <li class="breadcrumb-item active" aria-current="page">Sản phẩm</li>
+            </ol>
+          </div>
+
+          <div class="update_product">
+            <!-- Cập nhật đơn hàng -->
+            <div class="card">
+              <div class="border_card">
+                <h6 class="m-0 font-weight-bold text-primary">THÊM/SỬA SẢN PHẨM</h6>
+              </div>
+            </div>
+            <div class="edit_product">
+              <table id="table_product">
+                  <tr>
+                      <td>Mã sản phẩm</td>
+                      <td><input type="text" id="product_id"></td>
+                  </tr>
+                  <tr>
+                    <td>Chọn hình ảnh</td>
+                    <td class="image-container">
+                      <input type="file" id="product_image" onchange="displaySelectedImage()">
+                      <img id="selectedProductImage" style="max-width: 50px;">
+                    </td>
+                  </tr>
+                  <tr>
+                      <td>Tên sản phẩm</td>
+                      <td><input type="text" id="product_name"></td>
+                  </tr>
+                  <tr>
+                      <td>Giá bán</td>
+                      <td><input type="text"id="product_price"></td>
+                  </tr>
+                  <tr>
+                      <td>Nhà sản xuất</td>
+                      <td><input type="text" id="product_manu"></td>
+                  </tr>
+                  <tr>
+                      <td>Nhóm sản phẩm</td>
+                      <td>
+                          <select id="product_category">
+                              <option id="" value=""disabled selected hidden>Chọn danh mục sản phẩm</option>
+                              <option id=""value="Sách tiếng Anh">Sách tiếng Anh</option>
+                              <option id=""value="Sách tiếng Trung">Sách tiếng Trung</option>
+                              <option id=""value="Sách tiếng Nhật">Sách tiếng Nhật</option>
+                              <option id=""value="Sách tiếng Hàn">Sách tiếng Hàn</option>
+                              <option id=""value="Khác">Khác</option>
+                          </select>
+                      </td>
+
+                  </tr>
+                  <tr>
+                      <td>Mô tả sản phẩm:</td>
+                      <td><textarea type="text" id="product_description"></textarea></td>
+                  </tr>
+              </table>
+              <div id="button">
+                  <button onclick="saveProduct()">Lưu</button>
+                  <button onclick="cancel()">Hủy bỏ</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Container Fluid-->
+        <div class="container-fluid" id="container-wrapper-manage">
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Quản lý sản phẩm</h1>
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="./">Trang chủ</a></li>
+              <li class="breadcrumb-item">Quản lý</li>
+              <li class="breadcrumb-item active" aria-current="page">Sản phẩm</li>
+            </ol>
+          </div>
+          <!-- Row -->
+          <div class="row" id="row">
+            <!-- Datatables -->
+            <div class="col-lg-12">
+              <div class="card mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Thông tin sản phẩm</h6>
+                  <a href="#" class="btn btn-sm btn-primary" style="width: 80px;" onclick="addProduct()">Tạo mới</a>
+                  <a style="width: 400px;"></a>
+                  Search: <input type="text" id="myInput" placeholder="">
+                </div>
+                <div class="table-responsive p-3">
+                    <table class="table align-items-center table-flush" id ="demo"> 
+
+<script>
+
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+    myFunction(this);
+    } 
+    };
+    xhttp.open("GET", "stored/product.xml", true);
+    xhttp.send();
+    function myFunction(xml) {
+    var i;
+    var xmlDoc = xml.responseXML;
+    var table="<thead class=\"thead-light\">\n" +"<tr><th>Mã sản phẩm</th><th>Hình ảnh</th><th>Tên sản phẩm</th><th>Mô tả</th><th>Giá</th><th>Nhà xuất bản</th><th>Danh mục</th><th></th><th></th></tr>";
+    var x = xmlDoc.getElementsByTagName("product");
+    for (i = 0; i <x.length; i++) {
+    table += "<tr><td>" + x[i].getElementsByTagName("productid")[0].childNodes[0].nodeValue + "</td><td>" + "<img src=\"stored/" +
+  x[i].getElementsByTagName("productimg")[0].childNodes[0].nodeValue +"\" width=\"100\">" +
+  "</td><td>" +
+    x[i].getElementsByTagName("productname")[0].childNodes[0].nodeValue + "</td><td>" +
+      x[i].getElementsByTagName("desc")[0].childNodes[0].nodeValue + "</td><td>" +
+        x[i].getElementsByTagName("price")[0].childNodes[0].nodeValue + "</td><td>" +
+          x[i].getElementsByTagName("publisher")[0].childNodes[0].nodeValue + "</td><td>" +
+    x[i].getElementsByTagName("tag")[0].childNodes[0].nodeValue + "</td><td>" +
+  "<a href=\"#\" class=\"btn btn-sm btn-primary\" onclick=\"editProduct(this)\">Sửa</a>" + "</td><td>" +
+  "<a href=\"#\" class=\"btn btn-sm btn-danger\" onclick=\"deleteProduct(this)\">Xóa</a>"
+  "</td></tr>";
+    }
+    document.getElementById("demo").innerHTML = table;
+      // Lấy input và bảng
+      var input = document.getElementById("myInput");
+          var table = document.getElementById("demo");
+
+          // Lắng nghe sự kiện khi người dùng nhập vào input
+          input.addEventListener("keyup", function() {
+              // Lấy giá trị nhập vào và chuyển đổi thành chữ thường để so sánh không phân biệt chữ hoa/chữ thường
+              var filter = input.value.toLowerCase();
+
+              // Lặp qua từng dòng của bảng (bắt đầu từ dòng thứ 1, vì dòng đầu tiên là tiêu đề)
+              for (var i = 1; i < table.rows.length; i++) {
+                  var row = table.rows[i];
+                  var data = row.innerText.toLowerCase();
+
+                  // Ẩn dòng nếu không chứa giá trị nhập vào
+                  row.style.display = data.includes(filter) ? "" : "none";
+              }
+          });
+    }
+
+    // Add product
+    function addProduct(){
+      var container1 = document.getElementById ('container-wrapper-manage');
+      var container2 = document.getElementById ('container-wrapper-update');
+
+      container1.style.display = "none";
+      container2.style.display = "block";
+    }
+
+    function displaySelectedImage() {
+      var input = document.getElementById('product_image');
+      var image = document.getElementById('selectedProductImage');
+
+      if (input.files && input.files[0]) {
+          var reader = new FileReader();
+
+          reader.onload = function (e) {
+              image.src = e.target.result;
+              image.style.display = 'block';
+          };
+
+          reader.readAsDataURL(input.files[0]);
+      }
+    }
+
+    function displayImageInTable(imageUrl) {
+      // Tạo một thẻ <img> mới
+      var imageElement = document.createElement('img');
+
+      // Đặt đường dẫn hình ảnh cho thuộc tính src
+      imageElement.src = imageUrl;
+      imageElement.style.maxWidth = '120px'; // Thiết lập chiều rộng tối đa 
+
+      // Tạo một thẻ <td> mới
+      var tdElement = document.createElement('td');
+
+      // Thêm thẻ <img> vào thẻ <td>
+      tdElement.appendChild(imageElement);
+
+      return tdElement;
+    }
+
+    var isEditMode = false;
+    var editedRow = null;
+    function saveProduct() {
+      // Get value from inputs
+      var productId = document.getElementById('product_id').value;
+      var productName = document.getElementById('product_name').value;
+      var productDes = document.getElementById('product_description').value;
+      var productPrice = document.getElementById('product_price').value;
+      var productManu = document.getElementById('product_manu').value;
+      var productCategory = document.getElementById('product_category').value;
+
+
+      var productImage = document.getElementById('selectedProductImage');
+      var selectedImageSrc = productImage.src;
+
+      if (productId && selectedImageSrc && productName && productDes && productPrice && productManu && productCategory) {
+          if (isEditMode) {
+
+              editedRow.cells[0].innerHTML = productId;
+              editedRow.cells[1].innerHTML = displayImageInTable(selectedImageSrc).outerHTML;
+              editedRow.cells[2].innerHTML = productName;
+              editedRow.cells[3].innerHTML = productDes;
+              editedRow.cells[4].innerHTML = productPrice;
+              editedRow.cells[5].innerHTML = productManu;
+              editedRow.cells[6].innerHTML = productCategory;
+
+              // Reset biến sau khi lưu
+              isEditMode = false;
+              editedRow = null;
+
+              alert("Cập nhật sản phẩm thành công!");
+
+          }
+          else {
+            // Tạo một hàng mới cho bảng
+            var newRow = document.createElement("tr");
+
+            newRow.innerHTML = "<td>" + productId + "</td>" + displayImageInTable(selectedImageSrc).outerHTML +
+            "<td>" + productName + "</td>" + "<td>" + productDes + "</td>" + "<td>" + productPrice + "</td>" +
+            "<td>" + productManu + "</td>" + "<td>" + productCategory + "</td>" +
+            "<td><a href=\"#\" class=\"btn btn-sm btn-primary\" onclick=\"editProduct(this)\">Sửa</a></td>" +
+            "<td><a href=\"#\" class=\"btn btn-sm btn-danger\" onclick=\"deleteProduct(this)\">Xóa</a></td>";
+            // Thêm hàng mới vào bảng
+            var table = document.getElementById("demo");
+            table.appendChild(newRow);      
+
+            alert("Thêm sản phẩm thành công!");
+          }
+          // Reset giá trị của input sau khi cập nhật
+          document.getElementById("product_id").value = "";
+          document.getElementById("product_name").value = "";
+          document.getElementById("product_description").value = "";
+          document.getElementById("product_price").value = "";
+          document.getElementById("product_manu").value = "";
+          document.getElementById("product_category").value = "";
+          document.getElementById('product_image').value = "";
+          document.getElementById('selectedProductImage').src = "";
+      } 
+      else {
+          alert("Vui lòng điền đầy đủ thông tin sản phẩm!");
+          return;
+      }
+    }
+
+    function editProduct(row) {
+      isEditMode = true;
+      editedRow = row.parentNode.parentNode;
+
+      addProduct();
+      // Lấy thông tin sản phẩm từ dòng được chọn
+      var productId = editedRow.cells[0].innerHTML;
+      var productImage = editedRow.cells[1].getElementsByTagName("img")[0].src;
+      var productName = editedRow.cells[2].innerHTML;
+      var productDescription = editedRow.cells[3].innerHTML;
+      var productPrice = editedRow.cells[4].innerHTML;
+      var productManufacturer = editedRow.cells[5].innerHTML;
+      var productCategory = editedRow.cells[6].innerHTML;
+
+      // Hiển thị thông tin sản phẩm vào các input của table_product
+      document.getElementById("product_id").value = productId;
+      document.getElementById("selectedProductImage").src = productImage;
+      document.getElementById("product_name").value = productName;
+      document.getElementById("product_description").value = productDescription;
+      document.getElementById("product_price").value = productPrice;
+      document.getElementById("product_manu").value = productManufacturer;
+      document.getElementById("product_category").value = productCategory;
+    }
+
+      // Delete product
+    function deleteProduct(clickedButton) {
+
+      var table = document.getElementById("demo");
+
+      // Get the row index
+      var rowIndex = clickedButton.parentNode.parentNode.rowIndex;
+
+      // Confirm deletion
+      var confirmDelete = confirm("Bạn có chắc chắn muốn xóa sản phẩm?");
+      if (!confirmDelete) {
+        return;
+      }
+      // Remove the row from the table
+      table.deleteRow(rowIndex);
+    }
+
+    // Button cancel
+    function cancel(){
+      var container1 = document.getElementById ('container-wrapper-manage');
+      var container2 = document.getElementById ('container-wrapper-update');
+
+      container1.style.display = "block";
+      container2.style.display = "none";
+
+      document.getElementById("product_id").value = "";
+      document.getElementById("product_name").value = "";
+      document.getElementById("product_description").value = "";
+      document.getElementById("product_price").value = "";
+      document.getElementById("product_manu").value = "";
+      document.getElementById("product_category").value = "";
+      document.getElementById('product_image').value = "";
+      document.getElementById('selectedProductImage').src = "";
+
+    }
+
+  </script>
+    </table>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Scroll to top -->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="js/admin-app.min.js"></script>
+  <!-- Page level plugins -->
+  <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+  <!-- Page level custom scripts -->
+
+</body>
+
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link href="img/logo/logo.png" rel="icon">
+  <title>Trang chủ | rakkiibookstore</title>
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="css/admin-app.css" rel="stylesheet">
+  <link href="css/signup-signin.css"rel="stylesheet">
+  <!--====== Google Font ======-->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet">
+</head>
+<body id="page-top">
+  <div id="wrapper">
+    <!-- Sidebar -->
+    <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
+      <script src="admin-navsidebar.js"></script>
+    </ul>
+      <!-- Sidebar -->
+      <div id="content-wrapper" class="d-flex flex-column">
+        <div id="content">
+          <!-- TopBar -->
+          <nav class="navbar navbar-expand navbar-light bg-navbar topbar mb-4 static-top" id="topbar">
+            <script src="admin-navtopbar.js"></script>
+          </nav>
+
+        <!-- Topbar -->
+        <!-- Container Fluid-->
+        <div class="container-fluid" id="container-wrapper">
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Đăng nhập</h1>
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="./">Trang chủ</a></li>
+              <li class="breadcrumb-item">Hoạt động</li>
+              <li class="breadcrumb-item active" aria-current="page">Đăng nhập</li>
+            </ol>
+          </div>
+        </div>
+        <!-- Section -->
+        <section>
+            <!--Logo-->
+            <div class="logo">
+            <img src="img/logo/logo.jpg" alt="Logo page">
+            </div>
+            <!-- End Logo -->
+    
+            <!-- Content -->
+            <div class="content">
+            <div class="form">
+                <h2>Trang Đăng Nhập</h2>
+                <form id="">
+                <div class="input-form">
+                    <input type="text" id="user" name="" placeholder="Tên đăng nhập">
+                </div>
+                <div class="input-form" title="user-pass">
+                    <input type="password" id="pass" name="" placeholder="Mật khẩu">
+                    <img src="img/icon/hide.png" alt="Hide" id="togglePassword" onclick="togglePasswordVisibility('pass', 'togglePassword')">
+                </div>
+                <div class="input-form">
+                    <input type="button" value="Đăng nhập" onclick="logIn()">
+                </div>
+                <div class="remember-me-forgot-password">
+                    <label><input type="checkbox" id="rememberMe" name=""> Nhớ đăng nhập</label>
+                    <a href="loss-password.html">Quên mật khẩu?</a>
+                </div>
+                <p>Hoặc đăng nhập bằng</p>
+                <div class="icon">
+                    <ul>
+                        <li>
+                            <a href="https://www.facebook.com" target="_blank">
+                                <img src="img/icon/icon-face.png" alt="Facebook Icon">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://accounts.google.com" target="_blank">
+                                <img src="img/icon/icon-google.png" alt="Google Icon">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="input-form">
+                    <p>Bạn chưa có tài khoản? <a href="register.html">Đăng ký</a></p>
+                </div>
+                </form>
+            </div>
+            </div>
+    
+            <!-- End Content -->
+        </section>
+        <!-- End Section -->
+        
+  <!-- Scroll to top -->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <script>
+    // Hàm để lấy thông tin đăng nhập đã lưu khi trang web tải
+    window.onload = function() {
+        var savedUsername = localStorage.getItem('username');
+        var savedPassword = localStorage.getItem('password');
+        var rememberMe = localStorage.getItem('rememberMe'); // Lấy trạng thái của checkbox
+
+        var userField = document.getElementById('user');
+        var passField = document.getElementById('pass');
+        var rememberMeCheckbox = document.getElementById('rememberMe');
+
+        if (savedUsername && savedPassword) {
+            userField.value = savedUsername;
+            passField.value = savedPassword;
+        }
+
+        if (rememberMe) {
+            rememberMeCheckbox.checked = true;
+        }
+
+        // Thêm sự kiện input cho trường nhập tên đăng nhập
+        userField.addEventListener("input", function() {
+            // Nếu trường tên đăng nhập rỗng, xóa giá trị mật khẩu và checkbox nhớ đăng nhập
+            if (userField.value === '') {
+                passField.value = '';
+                rememberMeCheckbox.checked = false;
+            }
+        });
+    }
+  </script>
+
+  <script src="valid-admin.js"></script>
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="js/admin-app.min.js"></script>
+  <script src="vendor/chart.js/Chart.min.js"></script>
+  <script src="js/demo/chart-area-demo.js"></script>   
+</body>
+</html>
+

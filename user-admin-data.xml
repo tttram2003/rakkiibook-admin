@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<root>
+  <admin>
+    <username>Tên đăng nhập</username>
+    <password>Mật khẩu</password>
+  </admin>
+  <admin>
+    <username>tram2003</username>
+    <password>Ttt201220003</password>
+  </admin>
+</root>

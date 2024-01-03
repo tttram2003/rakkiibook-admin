@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link href="img/logo/logo.png" rel="icon">
+  <title>Quản lý đơn hàng | rakkiibookstore</title>
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="css/admin-app.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/update_order.css">
+  <!--====== Google Font ======-->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet">
+</head>
+
+<body id="page-top">
+  <div id="wrapper">
+    <!-- Sidebar -->
+    <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
+      <script src="admin-navsidebar.js"></script>
+    </ul>
+    <!-- Sidebar -->
+    <div id="content-wrapper" class="d-flex flex-column">
+      <div id="content">
+        <!-- TopBar -->
+        <nav class="navbar navbar-expand navbar-light bg-navbar topbar mb-4 static-top" id="topbar">
+          <script src="admin-navtopbar.js"></script>
+        </nav>
+        <!-- Topbar -->
+
+        <!-- Container Fluid-->
+        <div class="container-fluid" id="container-wrapper-update" style="display: none;">
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">CẬP NHẬT ĐƠN HÀNG</h1>
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="./">Trang chủ</a></li>
+              <li class="breadcrumb-item">Quản lý</li>
+              <li class="breadcrumb-item active" aria-current="page">Đơn hàng</li>
+            </ol>
+          </div>
+
+          <div class="update_order">
+            <!-- Cập nhật đơn hàng -->
+            <div class="card">
+              <div class="border_card">
+                <h6 class="m-0 font-weight-bold text-primary">THÊM/SỬA ĐƠN HÀNG</h6>
+              </div>
+            </div>
+            <div class="edit_order">
+              <table id="table_order">
+                <tr>
+                  <td>Mã đơn hàng:</td>
+                  <td><input type="text" id="order_id"></td>
+                  <td>Khách hàng:</td>
+                  <td><input type="text" id="customer_name"></td>
+                </tr>
+                <tr>
+                  <td>Địa chỉ:</td>
+                  <td><textarea id="address"></textarea></td>
+                  <td>Sản phẩm - Số lượng - Giá:</td>
+                  <td><textarea id="product_quantity_price"></textarea></td>
+                </tr>
+                <tr>
+                  <td>Trạng thái đơn hàng:</td>
+                  <td>
+                    <select id="order_status">
+                      <option id="" value="" disabled selected hidden>Chọn trạng thái đơn hàng</option>
+                      <option id="" value="Chờ xác nhận">Chờ xác nhận</option>
+                      <option id="" value="Đang vận chuyển">Đang vận chuyển</option>
+                      <option id="" value="Giao hàng thành công">Giao hàng thành công</option>
+                      <option id="" value="Hủy đơn">Hủy đơn</option>
+                    </select>
+                  </td>
+                  <td>Trạng thái thanh toán:</td>
+                  <td>
+                    <select id="payment_status">
+                      <option id="" value="" disabled selected hidden>Chọn trạng thái thanh toán</option>
+                      <option id="" value="Chưa thanh toán">Chưa thanh toán</option>
+                      <option id="" value="Đã thanh toán">Đã thanh toán</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Ngày đặt:</td>
+                  <td><input type="text" id="order_date"></td>
+                  <td>Tổng tiền:</td>
+                  <td><input type="text" id="total_amount"></td>
+                </tr>
+              </table>
+              <div id="button">
+                <button onclick="saveOrder()">Lưu</button>
+                <button onclick="cancel()">Hủy bỏ</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Container Fluid-->
+        <div class="container-fluid" id="container-wrapper-manage">
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Quản lý đơn hàng</h1>
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="./">Trang chủ</a></li>
+              <li class="breadcrumb-item">Quản lý</li>
+              <li class="breadcrumb-item active" aria-current="page">Đơn hàng</li>
+            </ol>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12 mb-4">
+              <!-- Quản lý đơn hàng -->
+              <div class="card">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Thông tin giao dịch</h6>
+                  <!-- <a href="#" class="btn btn-sm btn-primary" style="width: 80px;">Tạo mới</a> -->
+                  <a style="width: 700px;"></a>
+                  Search: <input type="text" id="myInput" placeholder="">
+                </div>
+                <div class="table-responsive">
+                  <!--Input dữ liệu từ order.xml hiển thị vào order table-->
+                  
+                      <table class="table align-items-center table-flush" id="demo">
+
+                      <script>
+                      var xhttp = new XMLHttpRequest();
+                      xhttp.onreadystatechange = function () {
+                        if (this.readyState == 4 && this.status == 200) {
+                          myFunction(this);
+                        }
+                      };
+                      xhttp.open("GET", "stored/order.xml", true);
+                      xhttp.send();
+
+                      function myFunction(xml) {
+                        var i, j;
+                        var xmlDoc = xml.responseXML;
+                        var table = "<thead class=\"thead-light\">\n" +
+                          "<tr><th>Mã đơn</th><th>Tên khách hàng</th><th>Mã sản phẩm</th><th>Tên sản phẩm</th><th>Địa chỉ</th><th>Đơn giá</th><th>Số lượng</th><th>Ngày đặt</th><th>Trạng thái đơn hàng</th><th>Tổng tiền</th><th>Trạng thái thanh toán</th><th></th><th></th></tr>";
+                        var x = xmlDoc.getElementsByTagName("order");
+
+                        for (i = 0; i < x.length; i++) {
+                          var color = "";
+                          if (x[i].getElementsByTagName("payment")[0].childNodes[0].nodeValue === "Đã thanh toán") {
+                            color = "green";
+                          } else {
+                            color = "red";
+                          }
+                          var style = "color: " + color + "; font-weight: bold;";
+                          table += "<tr><td>" +
+                            x[i].getElementsByTagName("id")[0].childNodes[0].nodeValue +
+                            "</td><td>" +
+                            x[i].getElementsByTagName("cusname")[0].childNodes[0].nodeValue + "</td>";
+
+                          // Lấy thông tin từng sản phẩm trong đơn hàng
+                          var products = x[i].getElementsByTagName("product");
+
+                          
+                          
+                            table += "<td>" + products[0].getElementsByTagName("productid")[0].childNodes[0].nodeValue + "</td>"+"<td>" + products[0].getElementsByTagName("productname")[0].childNodes[0].nodeValue + "</td>"
+                            
+                          
+
+                          table += "<td>" +
+                            x[i].getElementsByTagName("address")[0].childNodes[0].nodeValue + "</td>";
+
+
+                          // Hiển thị đơn giá và số lượng cho sản phẩm đầu tiên
+                          if (products.length > 0) {
+                            table += "<td>" + products[0].getElementsByTagName("unitprice")[0].childNodes[0].nodeValue + "</td>";
+                            table += "<td>" + products[0].getElementsByTagName("soluong")[0].childNodes[0].nodeValue + "</td>";
+                          } else {
+                            table += "<td></td><td></td>"; // Đơn giá và số lượng trống nếu không có sản phẩm
+                          }
+
+                          table += "<td>" +
+                            x[i].getElementsByTagName("dateorder")[0].childNodes[0].nodeValue + "</td><td>";
+
+                          switch (x[i].getElementsByTagName("status")[0].childNodes[0].nodeValue) {
+                            case "Giao hàng thành công":
+                              table += "<span class='badge badge-success'>" + x[i].getElementsByTagName("status")[0].childNodes[0].nodeValue + "</span>";
+                              break;
+                            case "Đang vận chuyển":
+                              table += "<span class='badge badge-warning'>" + x[i].getElementsByTagName("status")[0].childNodes[0].nodeValue + "</span>";
+                              break;
+                              case "Hủy đơn":
+                                  table += "<span class='badge badge-danger'>" + x[i].getElementsByTagName("status")[0].childNodes[0].nodeValue + "</span>";
+                                  break;
+                                case "Chờ xác nhận":
+                                  table += "<span class='badge badge-info'>" + x[i].getElementsByTagName("status")[0].childNodes[0].nodeValue + "</span>";
+                                  break;
+                              }
+
+                              table += "</td>" + "</td><td>";
+
+                              // Tính tổng tiền cho tất cả sản phẩm trong đơn hàng
+                              var total = 0;
+                              for (j = 0; j < products.length; j++) {
+                                total += parseFloat(products[j].getElementsByTagName("unitprice")[0].childNodes[0].nodeValue) *
+                                  parseFloat(products[j].getElementsByTagName("soluong")[0].childNodes[0].nodeValue);
+                              }
+                              table += parseFloat(total).toLocaleString() + "</td><td style='" + style + ";'>" +
+                                x[i].getElementsByTagName("payment")[0].childNodes[0].nodeValue + "</td><td>" +
+                                "<a href=\"#\" class=\"btn btn-sm btn-primary\"onclick=\"editOrder(this)\">Sửa</a>" + "</td><td>" +
+                                "<a href=\"#\" class=\"btn btn-sm btn-danger\"onclick=\"deleteOrder(this)\">Xóa</a>" +
+                                "</td></tr>";
+                          for (j = 1; j < products.length; j++) {
+                            table += "<td></td><td></td>"+"<td>" + products[j].getElementsByTagName("productid")[0].childNodes[0].nodeValue + "</td>"+"<td>" + products[j].getElementsByTagName("productname")[0].childNodes[0].nodeValue + "</td>" + "<td></td>"+ "<td>" + products[j].getElementsByTagName("unitprice")[0].childNodes[0].nodeValue + "</td>";
+                              table += "<td>" + products[j].getElementsByTagName("soluong")[0].childNodes[0].nodeValue + "</td>";
+                            if (j < products.length - 1) { // Thêm dấu xuống dòng nếu chưa phải sản phẩm cuối cùng;                            
+                            }
+                          }
+  
+                            }
+
+                            // Thêm bảng vào trang web
+                            document.getElementById("demo").innerHTML = table;
+                          
+
+                          
+                        // Lấy input và bảng
+                        var input = document.getElementById("myInput");
+                        var table = document.getElementById("demo");
+
+                        // Lắng nghe sự kiện khi người dùng nhập vào input
+                        input.addEventListener("keyup", function () {
+                          // Lấy giá trị nhập vào và chuyển đổi thành chữ thường để so sánh không phân biệt chữ hoa/chữ thường
+                          var filter = input.value.toLowerCase();
+
+                          // Lặp qua từng dòng của bảng (bắt đầu từ dòng thứ 1, vì dòng đầu tiên là tiêu đề)
+                          for (var i = 1; i < table.rows.length; i++) {
+                            var row = table.rows[i];
+                            var data = row.innerText.toLowerCase();
+
+                            // Ẩn dòng nếu không chứa giá trị nhập vào
+                            row.style.display = data.includes(filter) ? "" : "none";
+                          }
+                        });
+                      }
+
+                      // Add order
+                      function addOrder() {
+                        var container1 = document.getElementById('container-wrapper-manage');
+                        var container2 = document.getElementById('container-wrapper-update');
+
+                        container1.style.display = "none";
+                        container2.style.display = "block";
+                      }
+
+                      var isEditMode = false;
+                      var editedRow = null;
+                      function saveOrder() {
+                        // Lấy giá trị từ các input
+                        var orderId = document.getElementById("order_id").value;
+                        var customerName = document.getElementById("customer_name").value;
+                        var address = document.getElementById("address").value;
+                        var productQuantityPrice = document.getElementById("product_quantity_price").value;
+                        var orderStatus = document.getElementById("order_status").value;
+                        var paymentStatus = document.getElementById("payment_status").value;
+                        var orderDate = document.getElementById("order_date").value;
+                        var totalAmount = document.getElementById("total_amount").value;
+
+                        // Tách sản phẩm, số lượng, giá
+                        var productQuantityPriceArray = productQuantityPrice.split("-");
+                        var productName = productQuantityPriceArray[0].trim();
+                        var productQuantity = productQuantityPriceArray[1].trim();
+                        var unitPrice = productQuantityPriceArray[2].trim();
+
+                        // Set badge and color of status
+                        switch (orderStatus) {
+                          case "Giao hàng thành công":
+                            statusBadge = "<span class='badge badge-success'>" + orderStatus + "</span>";
+                            break;
+                          case "Đang vận chuyển":
+                            statusBadge = "<span class='badge badge-warning'>" + orderStatus + "</span>";
+                            break;
+                          case "Hủy đơn":
+                            statusBadge = "<span class='badge badge-danger'>" + orderStatus + "</span>";
+                            break;
+                          case "Chờ xác nhận":
+                            statusBadge = "<span class='badge badge-info'>" + orderStatus + "</span"
+                        }
+                        if (paymentStatus === "Đã thanh toán") {
+                          editedRow.cells[9].style.color = "green";
+                        }
+                        else {
+                          editedRow.cells[9].style.color = "red";
+                        }
+
+                        if (orderId && customerName && address && productName && productQuantity && unitPrice && orderStatus && paymentStatus && orderDate && totalAmount) {
+                          if (isEditMode) {
+                            editedRow.cells[1].innerText = customerName;
+                            editedRow.cells[2].innerText = productName;
+                            editedRow.cells[3].innerText = address;
+                            editedRow.cells[4].innerText = unitPrice;
+                            editedRow.cells[5].innerText = productQuantity;
+                            editedRow.cells[6].innerText = orderDate;
+                            editedRow.cells[7].innerHTML = statusBadge;
+                            editedRow.cells[8].innerText = (parseFloat(unitPrice) * parseFloat(productQuantity));
+                            editedRow.cells[9].innerText = paymentStatus;
+
+                            // Reset biến sau khi lưu
+                            isEditMode = false;
+                            editedRow = null;
+
+                            alert("Cập nhật đơn hàng thành công!");
+
+                          }
+                          // Reset giá trị của input sau khi cập nhật
+                          document.getElementById("order_id").value = "";
+                          document.getElementById("customer_name").value = "";
+                          document.getElementById("address").value = "";
+                          document.getElementById("product_quantity_price").value = "";
+                          document.getElementById("order_status").value = "";
+                          document.getElementById("payment_status").value = "";
+                          document.getElementById("order_date").value = "";
+                          document.getElementById("total_amount").value = "";
+
+                        }
+                        else {
+                          alert("Vui lòng điền đầy đủ thông tin đơn hàng!")
+                          return;
+                        }
+                      }
+
+                      function editOrder(row) {
+                        isEditMode = true;
+                        editedRow = row.parentNode.parentNode;
+
+                        addOrder();
+
+                        // Lấy thông tin từ dòng và hiển thị lên các input
+                        document.getElementById("order_id").value = editedRow.cells[0].innerHTML;
+                        document.getElementById("customer_name").value = editedRow.cells[1].innerHTML;
+                        document.getElementById("address").value = editedRow.cells[3].innerHTML;
+                        document.getElementById("product_quantity_price").value = editedRow.cells[2].innerHTML + " - " + editedRow.cells[5].innerHTML + " - " + editedRow.cells[4].innerHTML;
+                        document.getElementById("order_status").value = editedRow.cells[7].innerText;
+                        document.getElementById("payment_status").value = editedRow.cells[9].innerHTML;
+                        document.getElementById("order_date").value = editedRow.cells[6].innerHTML;
+                        document.getElementById("total_amount").value = editedRow.cells[8].innerHTML;
+
+                        // Order_id, customer_name và order_date ko thay đổi
+                        document.getElementById("order_id").readOnly = true;
+                        document.getElementById("customer_name").readOnly = true;
+                        document.getElementById("order_date").readOnly = true;
+
+                      }
+
+                      // Delete order
+                      function deleteOrder(clickedButton) {
+
+                        var table = document.getElementById("demo");
+
+                        // Get the row index
+                        var rowIndex = clickedButton.parentNode.parentNode.rowIndex;
+
+                        // Confirm deletion
+                        var confirmDelete = confirm("Bạn có chắc chắn muốn xóa đơn hàng?");
+                        if (!confirmDelete) {
+                          return;
+                        }
+                        // Remove the row from the table
+                        table.deleteRow(rowIndex);
+                      }
+
+                      // Button cancel
+                      function cancel() {
+                        var container1 = document.getElementById('container-wrapper-manage');
+                        var container2 = document.getElementById('container-wrapper-update');
+
+                        container1.style.display = "block";
+                        container2.style.display = "none";
+
+
+                        document.getElementById("order_id").value = "";
+                        document.getElementById("customer_name").value = "";
+                        document.getElementById("address").value = "";
+                        document.getElementById("product_quantity_price").value = "";
+                        document.getElementById("order_status").value = "";
+                        document.getElementById("payment_status").value = "";
+                        document.getElementById("order_date").value = "";
+                        document.getElementById("total_amount").value = "";
+
+                      }
+
+                    </script>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll to top -->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="js/admin-app.min.js"></script>
+
+</body>
+
+</html>

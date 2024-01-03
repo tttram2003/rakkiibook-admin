@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Trang cập nhật đơn hàng">
+    <meta name="author" content="Nhóm 6">
+    <title>Cập nhật sản phẩm | rakkiibookstore</title>
+
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="css/admin-app.css" rel="stylesheet">
+    <!-- ====== Google Font ====== -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet">
+
+
+    <!--====== Vendor Css ======-->
+    <link rel="stylesheet" href="css/vendor.css">
+
+    <!--====== Utility-Spacing ======-->
+    <link rel="stylesheet" href="css/utility.css">
+
+    <!--====== App ======-->
+    <link rel="stylesheet" href="css/app.css">
+
+    <link rel="stylesheet" href="css/update_product.css">
+
+</head>
+<body id="page-top">
+  <div id="wrapper">
+    <!-- Sidebar -->
+    <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
+      <script src="admin-navsidebar.js"></script>
+    </ul>
+    <!-- Sidebar -->
+    <div id="content-wrapper" class="d-flex flex-column">
+      <div id="content">
+        <!-- TopBar -->
+        <nav class="navbar navbar-expand navbar-light bg-navbar topbar mb-4 static-top" id="topbar">
+          <script src="admin-navtopbar.js"></script>
+        </nav>
+        <!-- Topbar -->
+
+        <!-- Container Fluid-->
+        <div class="container-fluid" id="container-wrapper">
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">CẬP NHẬT SẢN PHẨM</h1>
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="./">Trang chủ</a></li>
+              <li class="breadcrumb-item">Quản lý</li>
+              <li class="breadcrumb-item active" aria-current="page">Sản phẩm</li>
+            </ol>
+          </div>
+
+          <div class="update_product">
+            <!-- Cập nhật đơn hàng -->
+            <div class="card">
+              <div class="border_card">
+                <h6 class="m-0 font-weight-bold text-primary">THÊM/SỬA SẢN PHẨM</h6>
+              </div>
+            </div>
+            <div class="edit_product">
+              <table id="table_product">
+                  <tr>
+                      <td>Mã sản phẩm</td>
+                      <td><input type="text" id=""></td>
+                  </tr>
+                  <tr>
+                      <td>Tên sản phẩm</td>
+                      <td><input type="text" id="product_name"></td>
+                  </tr>
+                  <tr>
+                      <td>Giá bán</td>
+                      <td><input type="text"id="product_price"></td>
+                  </tr>
+                  <tr>
+                      <td>Nhà sản xuất</td>
+                      <td><input type="text" id="product_manu"></td>
+                  </tr>
+                  <tr>
+                      <td>Nhóm sản phẩm</td>
+                      <td>
+                          <select id="product_category">
+                              <option id="" value=""disabled selected hidden>Chọn nhóm sản phẩm</option>
+                              <option id=""value="Sách Tiếng Anh">Sách Tiếng Anh</option>
+                              <option id=""value="Sách Tiếng Trung">Sách Tiếng Trung</option>
+                              <option id=""value="Sách Tiếng Nhật">Sách Tiếng Nhật</option>
+                              <option id=""value="Sách Tiếng Hàn">Sách Tiếng Hàn</option>
+                          </select>
+                      </td>
+                  </tr>
+                      <td>Thể loại</td>
+                      <td>
+                          <select id="product_sub_category">
+                              <option id="" value=""disabled selected hidden>Chọn thể loại</option>
+                              <option id=""value="Văn Học - Giải Trí">Văn Học - Giải Trí</option>
+                              <option id=""value="Kinh Doanh - Hướng Dẫn">Kinh Doanh - Hướng Dẫn</option>
+                              <option id=""value="Khoa Học - Thông Tin">Khoa Học - Thông Tin</option>
+                          </select>
+                      </td>
+                  <tr>
+                    
+                  </tr>
+                  <tr>
+                      <td>Mô tả sản phẩm:</td>
+                      <td><textarea type="text" id=""></textarea></td>
+                  </tr>
+              </table>
+              <div id="button">
+                  <button>Lưu</button>
+                  <button>Hủy bỏ</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="js/admin-app.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Trang cập nhật đơn hàng">
+    <meta name="author" content="Nhóm 6">
+    <title>Cập nhật đơn hàng | rakkiibookstore</title>
+
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="css/admin-app.css" rel="stylesheet">
+    <!-- ====== Google Font ====== -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet">
+    
+
+    <!--====== Vendor Css ======-->
+    <link rel="stylesheet" href="css/vendor.css">
+
+    <!--====== Utility-Spacing ======-->
+    <link rel="stylesheet" href="css/utility.css">
+
+    <!--====== App ======-->
+    <link rel="stylesheet" href="css/app.css">
+
+    <link rel="stylesheet" href="css/update_order.css">
+
+</head>
+<body id="page-top">
+  <div id="wrapper">
+    <!-- Sidebar -->
+    <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
+      <script src="admin-navsidebar.js"></script>
+    </ul>
+    <!-- Sidebar -->
+    <div id="content-wrapper" class="d-flex flex-column">
+      <div id="content">
+        <!-- TopBar -->
+        <nav class="navbar navbar-expand navbar-light bg-navbar topbar mb-4 static-top" id="topbar">
+          <script src="admin-navtopbar.js"></script>
+        </nav>
+        <!-- Topbar -->
+    
+        <!-- Container Fluid-->
+        <div class="container-fluid" id="container-wrapper">
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Cập nhật đơn hàng</h1>
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="./">Trang chủ</a></li>
+              <li class="breadcrumb-item">Quản lý</li>
+              <li class="breadcrumb-item active" aria-current="page">Đơn hàng</li>
+            </ol>
+          </div>
+  
+          <div class="update_order">
+            <!-- Cập nhật đơn hàng -->
+            <div class="card">
+              <div class="border_card">
+                <h6 class="m-0 font-weight-bold text-primary">Thêm/Sửa đơn hàng</h6>
+              </div>
+            </div>
+            <div class="edit_order">
+              <table id="table_order">
+                  <tr>
+                      <td>Mã đơn hàng:</td>
+                      <td><input type="text" id=""></td>
+                      <td>Khách hàng:</td>
+                      <td><input type="text" id=""></td>
+                  </tr>
+                  <tr>
+                      <td>Địa chỉ:</td>
+                      <td><textarea id="textarea1"></textarea></td>
+                      <td>Ngày tạo:</td>
+                      <td><input type="text" id=""></td>   
+                  </tr>
+                  <!-- <tr>
+                      
+                      <td>Tổng tiền:</td>
+                      <td><input type="text" id=""></td>
+                  </tr> -->
+                  <tr>
+                      <td>Trạng thái đơn hàng:</td>
+                      <td>
+                          <select id="order_status">
+                              <option id="" value=""disabled selected hidden>Chọn trạng thái đơn hàng</option>
+                              <option id=""value="Chờ xác nhận">Chờ xác nhận</option>
+                              <option id=""value="Đang vận chuyển">Đang vận chuyển</option>
+                              <option id=""value="Giao hàng thành công">Giao hàng thành công</option>
+                              <option id=""value="Hủy đơn">Hủy đơn</option>
+                          </select>
+                      </td>
+                      <td>Trạng thái thanh toán:</td>
+                      <td>
+                          <select id="payment_status">
+                              <option id="" value=""disabled selected hidden>Chọn trạng thái thanh toán</option>
+                              <option id=""value="Chưa thanh toán">Chưa thanh toán</option>
+                              <option id=""value="Đã thanh toán">Đã thanh toán</option>
+                          </select>
+                      </td>
+                  </tr>
+                  <tr>
+
+                    <table id="products" >
+                        <tr>
+                            <td>ID sản phẩm</td>
+                            <td>Tên sản phẩm</td>
+                            <td>Đơn giá</td>
+                            <td>Số lượng</td>
+                            <td><button type="button" onclick="addProduct()">Thêm sản phẩm</button></td>
+                        </tr>
+                    </table>
+                  </tr>
+                  
+              </table>
+              <div id="button">
+                  <button>Lưu</button>
+                  <button>Hủy bỏ</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    let productIndex = 0;
+  
+    function addProduct() {
+        const productsTable = document.getElementById('products');
+        const newRow = productsTable.insertRow(-1);
+        newRow.innerHTML = `
+            <td><input type="text" id="productid${productIndex}" name="productid${productIndex}" style="width:100px;" ></td>
+            <td><input type="text" id="productname${productIndex}" name="productname${productIndex}" style="width:200px;"></td>
+            <td><input type="text" id="unitprice${productIndex}" name="unitprice${productIndex}" style="width:100px;"></td>
+            <td><input type="text" id="soluong${productIndex}" name="soluong${productIndex}"style="width:100px;"></td>
+        `;
+        productIndex++;
+    }
+  </script>
+
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="js/admin-app.js"></script>
+  
+</body>
+
+</html>

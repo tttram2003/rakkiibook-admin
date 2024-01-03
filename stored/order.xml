@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <!-- comment: thêm tag dựa theo input của form đặt hàng nha -->
+<root> 
+    <order>
+        <id>RA0449</id>
+        <cusname>Hà Lê</cusname>
+        <address>Số 6 Đặng Xuân Bảng, phường Đại Kim, quận Hoàng Mai, thành phố Hà Nội</address> 
+        <product>
+          <productid>0</productid>
+          <productname>On Earth We're Briefly Gorgeous: A Novel</productname>
+          <unitprice>299000</unitprice> 
+          <soluong>1</soluong>
+        </product>
+        <dateorder>20/11/2023</dateorder> 
+        <status>Giao hàng thành công</status>
+        <payment>Đã thanh toán</payment>
+    </order>
+    <order>
+        <id>RA5324</id>
+        <cusname>An Nguyễn</cusname> 
+        <address>Số nhà 801 A2B chung cư Tiến Bộ, Tổ 2, phường Hoàng Văn Thụ</address> 
+      <product>
+        <productid>1</productid>
+        <productname>House of Leaves: The Remastered Full-Color Edition</productname>
+        <unitprice>430000</unitprice> 
+        <soluong>2</soluong>
+      </product>
+      <product>
+        <productid>0</productid>
+        <productname>On Earth We're Briefly Gorgeous: A Novel</productname>
+        <unitprice>299000</unitprice> 
+        <soluong>1</soluong>
+      </product>
+        <dateorder>21/11/2023</dateorder> 
+        <status>Giao hàng thành công</status>
+        <payment>Đã thanh toán</payment>
+    </order>
+</root>

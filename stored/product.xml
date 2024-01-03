@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+	<product>
+    <productid>0</productid>
+		<productimg>onearth.jpg</productimg>
+		<productname>On Earth We're Briefly Gorgeous: A Novel</productname>
+		<desc>Một thoáng ta rực rỡ ở nhân gian viết dưới dạng một lá thư của nhân vật chính, Chó Con, gửi cho người mẹ không biết chữ của mình. Dưới dạng những mẩu chuyện nhỏ, xen kẽ với những đoạn trữ tình ngoại đề, triết lý, và những bài thơ, cuốn sách kể câu chuyện đời không chỉ của Chó Con (tên gọi yêu do bà ngoại đặt cho, nhưng cũng là cách tất cả mọi người trong sách gọi cậu) từ thuở nhỏ đến lúc chớm trưởng thành, mà cả ba thế hệ từ bà, đến mẹ, đến cậu, một cuộc di cư dài từ làng quê Việt Nam sang đất Mỹ, cũng như câu chuyện của những thanh niên Mỹ thế hệ cậu mà đặc trưng là người bạn trai Trevor.</desc>
+		<price>279000</price>
+		<publisher>Penguin Press</publisher>
+		<tag>Sách tiếng Anh</tag>
+	</product>
+	<product>
+    <productid>1</productid>
+		<productimg>houseofleaves.jpg</productimg>
+		<productname>House of Leaves: The Remastered Full-Color Edition</productname>
+		<desc>Cách đây nhiều năm, khi House of Leaves lần đầu tiên được truyền đi khắp nơi, nó chẳng khác gì một đống giấy được gói lại một cách tồi tàn, thỉnh thoảng một phần của chúng sẽ xuất hiện trên Internet. Bắt đầu với một nhóm thanh niên bị gạt ra ngoài lề xã hội—nhạc sĩ, nghệ sĩ xăm hình, lập trình viên, vũ nữ thoát y, nhà bảo vệ môi trường và những người nghiện adrenaline—cuốn sách cuối cùng đã đến tay các thế hệ lớn tuổi hơn, những người không chỉ thấy mình trong những trang được sắp xếp kỳ lạ đó mà còn cũng phát hiện ra con đường quay trở lại cuộc sống của những đứa con bị ghẻ lạnh của họ.</desc>
+		<price>430000</price>
+		<publisher>Pantheon</publisher>
+		<tag>Sách tiếng Anh</tag>
+	</product>
+	<product>
+    <productid>2</productid>
+		<productimg>allthelight.jpg</productimg>
+		<productname>All the Light We Cannot See</productname>
+		<desc>“All the light we can not see” là một cuốn sách viết lên qua lăng kính của hai nhân vật trong Thế chiến thứ hai. Marie Laure Leblanc là một cô bé mù từ khi lên 6 tuổi sống cùng cha tại Paris. Cha cô, ông Daniel Leblanc, là người thợ khóa tại Bảo tàng lịch sử tự nhiên quốc gia, đã nuôi dạy Marie trở thành một cô bé rất thông minh và hiểu biết. Marie lớn lên dù thiếu đi đôi mắt, nhưng cô có một người cha tuyệt vời luôn để dành tiền mua tặng cô những cuốn sách cho người khiếm thị vào mỗi lần sinh nhật cô bé, làm bữa sáng với cà phê thơm nồng và cùng dắt tay cô đi dưới hàng cây rợp bóng của viện bảo tàng nơi ông làm việc. Ông còn làm cho cô những mô hình khu nhà mà hai cha con ở để cô có thể định hình được rõ hơn qua việc cảm nhận chúng bằng tay. Tuy vậy, những ngày tháng yên bình không kéo dài qua lâu, khi Paris có nguy cơ bị đe dọa trước sự tấn công của Đức Quốc xã, ông Daniel đã phải đưa con gái đi khỏi nơi mà Marie nghĩ rằng mình và cha sẽ ở bên nhau suốt đời tại đó, đến Saint Malo cùng với viên đá quý mang tên Lửa Biển. </desc>
+		<price>331500</price>
+		<publisher>Simon And Schuster</publisher>
+		<tag>Sách tiếng Anh</tag>
+	</product>
+	<product>
+    <productid>3</productid>
+		<productimg>tobay.jpg</productimg>
+		<productname>Tỏ bày với nhân gian (Tên tiếng Trung: 人间告白)</productname>
+		<desc>Cuộc sống của Tiểu Cẩm và Tiểu Hốt đang tràn đầy hạnh phúc bên bé con Đậu Phộng thì tin dữ ập đến: Tiểu Hốt bị bệnh nặng. Vô cùng bàng hoàng và đau khổ, lại thêm bận bịu với con nhỏ, nhưng Tiểu Cẩm vẫn gạt nước mắt đứng dậy, trở thành chỗ dựa cho gia đình, chăm sóc và tiếp thêm nghị lực cho chồng vượt qua nghịch cảnh. Cuốn sách này là tất cả nước mắt và nụ cười của một người con gái, người vợ, người mẹ trong hành trình đồng hành với người mà cô yêu. Đi qua hết những ngày mưa, để tìm lại cầu vồng và nắng ấm.</desc>
+		<price>145000</price>
+		<publisher>Nhà xuất bản Liên đoàn Văn học và Nghệ thuật Trung Quốc</publisher>
+		<tag>Sách tiếng Trung</tag>
+	</product>
+	<product>
+    <productid>4</productid>
+		<productimg>madao.jpg</productimg>
+		<productname>Ma Đạo Tổ Sư (Tên tiếng Trung: 魔道祖师)</productname>
+		<desc>Ma đạo tổ sư (Tên tiếng Trung: 魔道祖师) là một bộ tiểu thuyết đam mỹ về chủ đề tu tiên của tác giả Mặc Hương Đồng Khứu. Tiểu thuyết có cốt truyện xoay quanh hai nhân vật chính là Ngụy Anh (Ngụy Vô Tiện) và Lam Trạm (Lam Vong Cơ). Thế gia nghĩa sĩ trên giang hồ phát động “Xạ Nhật Chi Chinh”, vì trượng nghĩa mà hợp lực thảo phạt Ôn gia. “Di Lăng Lão Tổ” Ngụy Vô Tiện mặc dù lập được công lớn, nhưng lại bị kẻ gian ghen ghét hãm hại, khiến hắn bị vạn người thóa mạ. Sau 13 năm, Nguỵ Vô Tiện lần nữa xuất hiện, cùng Cô Tô Lam Thị Lam Vong Cơ, Vân Mộng Giang Thị Giang Trừng tương ngộ. Từ đây bí ẩn trong giang hồ cũng dần được hé lộ.</desc>
+		<price>278000</price>
+		<publisher>Nhà xuất bản Văn nghệ Tứ Xuyên</publisher>
+		<tag>Sách tiếng Trung</tag>
+	</product>
+	<product>
+    <productid>5</productid>
+		<productimg>yeutinh.jpg</productimg>
+		<productname>Yêu Tinh (Tên tiếng Hàn: 도깨비)</productname>
+		<desc>Yêu Tinh (Tên tiếng Hàn: 도깨비) là một bộ tiểu thuyết tình cảm lãng mạn của tác giả Kim Su Yeon, Kim Eun Sook. Một yêu tinh bất tử bảo vệ các linh hồn và tìm kiếm cô dâu của mình, người duy nhất có thể rút được thanh kiếm mà Yêu tinh đã bị đâm trước đó. Khi thanh kiếm được gỡ bỏ cũng là lúc Kim Shin trở thành cát bụi và trở về hư không nhưng câu chuyện vẫn chưa dừng lại ở đó, tình yêu giữa cặp đôi yêu tinh như một sợi dây gắn kết giữa hai người họ...</desc>
+		<price>195000</price>
+		<publisher>Nhà xuất bản Văn học Hàn Quốc</publisher>
+		<tag>Sách tiếng Hàn</tag>
+	</product>
+	<product>
+    <productid>6</productid>
+		<productimg>yeudieukhonghoanhao.jpg</productimg>
+		<productname>Truyện Màu - Yêu những điều không hoàn hảo (Tên tiếng Hàn: 완벽하지 않은 것들에 대한 사랑)</productname>
+		<desc>Trong cuốn sách này, nhà sư Hyemin, người mang lại niềm an ủi cho nhiều người thông qua phương pháp giao tiếp thoải mái và ấm áp hơn là những lời khuyên răn, kể những câu chuyện ngắn nhưng dài lâu cho những người sống trong một thế giới đầy rẫy những điều không hoàn hảo. Nó nhấn mạnh rằng không chỉ có những phần bên trong chúng ta không hoàn hảo, mà còn có những góc nhìn nhân hậu nhìn những phần đó một cách nồng nhiệt, đồng thời nó dạy cách những người đang đấu tranh với các vấn đề nội tâm có thể chấp nhận bản thân hơn một chút và nhận ra bản chất của sự việc. tình yêu Nó đánh thức chúng ta qua những cuốn sách.</desc>
+		<price>245000</price>
+		<publisher>Monk Hyemin</publisher>
+		<tag>Sách tiếng Hàn</tag>
+	</product>
+	<product>
+    <productid>7</productid>
+		<productimg>chinhminh.jpg</productimg>
+		<productname>Tôi quyết định sống là chính mình (Tên tiếng Hàn: 나는 나로 살기로 했다)</productname>
+		<desc>Cuốn sách này cho chúng ta biết chúng ta cần những gì để sống như một cái ‘tôi’ hoàn chỉnh. Cuốn sách nói với chúng ta rằng không cần phải trở nên khốn khổ khi theo dõi tài khoản mạng xã hội của những người giàu có và thành công, và không cần phải bào chữa cho bản thân và cố gắng được mọi người hiểu. Bạn không cần phải làm việc chăm chỉ chỉ vì lo lắng, và tôi khuyến khích bạn đừng nhượng bộ trước câu trả lời của thế giới. Đừng bị tổn thương nữa bởi những người đi ngang qua cuộc đời bạn, đừng bị lung lay bởi lời nói của ai đó và đừng nhầm lẫn đó là vấn đề của chính bạn. Những lời chúng ta cần nhất là bảo chúng ta hãy sống là chính mình.</desc>
+		<price>178000</price>
+		<publisher>Kim Soo-hyun</publisher>
+		<tag>Sách tiếng Hàn</tag>
+	</product>
+	<product>
+    <productid>8</productid>
+		<productimg>dirtybertie24.jpg</productimg>
+		<productname>Dirty Bertie 24: Horror!</productname>
+		<desc>Dirty Bertie kể về cậu bé Bertie, một cậu bé lôi thôi luộm thuộm với thói quen hay ngoáy mũi. Bertie quá nghịch ngợm, cộng thêm tinh tinh hậu đậu khiến cậu bé gặp rất nhiều rắc rối. Vì thế, bạn bè gọi cậu là 'nam châm hút mọi rắc rối'. Mỗi tập truyện kể về những câu chuyện hài hước xoay quanh Bertie với câu nói nổi tiếng 'No Bertie! That's dirty, Bertie!' (Không Berti! Thật nhớp nhúa, Bertie!). Trong những câu chuyện gây cười này, Bertie sẽ xây dựng một ngôi nhà ma ám; tận hưởng ngày cuối tuần ẩm ướt cùng gia đình; và cố gắng gian lận để vượt qua Spelling Bee!</desc>
+		<price>108000</price>
+		<publisher>Stripes Publishing</publisher>
+		<tag>Sách tiếng Anh</tag>
+	</product>
+	<product>
+    <productid>9</productid>
+		<productimg>thewildwest.jpg</productimg>
+		<productname>The Wild West (100 Facts)</productname>
+		<desc>The Wild West (100 Facts) tràn ngập những sự thật, hình ảnh và hoạt động vui nhộn thú vị nhằm giúp trẻ em tìm hiểu mọi điều về cuộc sống ở Biên giới Hoa Kỳ. Trẻ em học dễ dàng hơn với thông tin nhỏ gọn. Hình ảnh và tác phẩm nghệ thuật hỗ trợ trẻ học thông qua gợi ý trực quan. Các hoạt động cho phép trẻ áp dụng những gì đã học vào thực tế. The Wild West (100 Facts) chứa đựng những chủ đề chính về lịch sử của lãnh thổ Hoa Kỳ này bằng những sự kiện được đánh số ngắn gọn, thú vị. Thông tin đi kèm với các hình ảnh minh họa và hình ảnh tuyệt vời đưa những sự thật khó tin vào bối cảnh dành cho học viên nhỏ tuổi.</desc>
+		<price>58000</price>
+		<publisher>Miles Kelly Publishing</publisher>
+		<tag>Sách tiếng Anh</tag>
+	</product>
+</root>

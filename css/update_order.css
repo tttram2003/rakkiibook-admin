@@ -1,0 +1,53 @@
+.border_card {
+    border: 2px solid white; 
+    padding: 10px; 
+    border-radius: 8px;
+}
+
+.edit_order {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: white;
+    border: 5px solid white;
+    
+}
+
+#table_order {
+    width: 100%;
+    padding: 10px;
+}
+
+th, td {
+    padding: 10px;
+}
+
+td{
+    font-weight:600;
+}
+
+input, select {
+    height: 25px; 
+    width: 230px;
+    box-sizing: border-box;
+    margin: 5px;
+}
+
+textarea {
+    overflow: auto;
+    resize: vertical;
+    height: 70px;
+    width: 230px;
+    max-height: 70px; 
+    margin: 5px;
+}
+
+
+#button {
+    text-align: right;
+    margin-top: 20px;
+}
+
+button{
+    background-color: #3f51b5;
+    color: white; 
+}
