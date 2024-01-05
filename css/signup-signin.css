@@ -22,8 +22,8 @@ section .logo img{
     position: absolute;
     top: 70px;
     left: 100px;
-    max-width: 80%; /* giảm chiều rộng tối đa */
-    max-height: 70%; /* giảm chiều cao tối đa */
+    max-width: 80%;
+    max-height: 80%;
     object-fit: cover;
 }
 
