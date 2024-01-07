@@ -133,7 +133,7 @@ function logIn() {
                         localStorage.removeItem('rememberMe');
                     }
 
-                    window.location.href = 'admin-index.html';
+                    window.location.href = 'index.html';
                     loginSuccess = true;
                     break;
                 }
