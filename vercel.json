@@ -1,0 +1,8 @@
+{
+  "functions": {
+    "api/user-admin.js": {
+      "runtime": "nodejs14.x",
+      "memory": 512
+    }
+  }
+}
