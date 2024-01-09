@@ -4,7 +4,6 @@ var xml2js = require('xml2js');
 var fs = require('fs');
 var app = express();
 
-const PORT = process.env.PORT || 3000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -55,9 +54,6 @@ app.post('/admin-update-password', function(req, res) {
     });
 });
 
-// app.listen(3000, function() {
-//     console.log('App listening on port 3000');
-// });
-app.listen(PORT, function() {
-    console.log('Server is running on port ' + PORT);
+app.listen(3000, function() {
+    console.log('App listening on port 3000');
 });
